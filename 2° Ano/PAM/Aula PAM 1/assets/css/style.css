@@ -1,0 +1,53 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+
+.container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.miniaturas{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    width: 20vw;
+    height: 100vh;
+    background-color: #1b1b1b;
+}
+
+.img-mini{
+    height: 26vh;
+    border-radius: 3rem;
+    cursor: pointer;
+}
+
+.conteudo{
+    background-color: #4b0606;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 80vw;
+    height: 100vh;
+}
+
+.img-principal{
+    height: 70vh;
+    border-radius: 1.5rem;
+    box-shadow: 0.5rem 0.5rem 0.3rem 0.3rem #1b1b1b;
+}
+
+.preloader{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    z-index: 99;
+    background-color: #4b0606;
+    height: 100vh;
+    width: 100vw;
+}

@@ -1,0 +1,11 @@
+var botoes = document.getElementsByTagName("button");
+for (var i = 0; i < botoes.length; i++) {
+  botoes[i].addEventListener("click", function() {
+    var imagem = document.createElement("img");
+    imagem.src = this.getAttribute("data-imagem");
+    imagem.style.position = "fixed";
+    imagem.style.top = "0";
+    imagem.style.right = "0";
+    document.body.appendChild(imagem);
+  });
+}

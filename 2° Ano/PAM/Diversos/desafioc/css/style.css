@@ -1,0 +1,73 @@
+@import url('https://fonts.googleapis.com/css2?family=Anton&family=Archivo+Blackdisplay=swap');
+
+*{
+    margin: 0;
+    padding: 0;
+}
+
+body{
+    font-size: 3rem;
+}
+
+.container{
+    width: 30%;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 1rem;
+    background-color: #8b0606;
+}
+
+.display{
+    font-family: 'Archivo Black', sans-serif;
+    font-size: 4rem;
+    width: 100%;
+    line-height: 8rem;
+    text-align: end;
+    color: #fff;
+    background-color: #000;
+}
+
+.row{
+    width: 98%;
+    margin: auto auto;
+    margin-top: 0.25rem;
+    margin-bottom: 0.25rem;
+    display: flex;
+    justify-content: center;
+}
+
+.btn{
+    cursor: pointer;
+    width: 5rem;
+    font-family: 'Anton', sans-serif;
+    font-size: 2rem;
+    line-height: 5rem;
+    background: #3e3f3f;
+    border: none;
+    border-radius: 0.4rem;
+    color: #fff;
+    margin: 0.5rem;
+}
+
+.btn:hover{
+    background: #2e2e2e;
+}
+
+@media (max-width: 576px){
+    .container{
+        width: 90%;
+    }
+
+    .display{
+        font-size: 3rem;
+        line-height: 5rem;
+    }
+
+    .btn{
+        width: 6rem;
+        font-size: 3rem;
+        line-height: 3rem;
+        border-radius: 0.3rem;
+        margin: 0.5rem;
+    }
+}

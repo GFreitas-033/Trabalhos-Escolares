@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mercado Express</title>
+    <style>
+         @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;700&display=swap');
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        body{
+            font-family: Poppins;
+        }
+
+        a{
+            text-decoration: none;
+        }
+
+        .topo {
+            background-color: #272727;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 2rem;
+        }
+
+        .nome {
+            color: #d30a0a;
+        }
+
+        .lista {
+            margin-right: 2rem;
+            float: right;
+        }
+
+        .linkar {
+            margin-right: 1rem;
+            color: #fc9797;
+            padding: 1.6rem;
+        }
+
+        .linkar:hover {
+            background-color: #555555;
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body>
+    <header class="topo">
+        <a href="main.php"><h1 class="nome">Mercado Express</h1></a>
+        <div class="lista">
+            <a href="main.php" class="linkar">Home</a>
+            <a href="carrinho.php" class="linkar">Carrinho</a>
+            <a href="https://rastreamento.correios.com.br/app/index.php" class="linkar">Entrega</a>
+            <a href="quem_somos.php" class="linkar">Quem Somos</a>
+        </div>
+    </header>
+</body>
+
+</html>

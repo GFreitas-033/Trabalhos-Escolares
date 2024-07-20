@@ -1,0 +1,29 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+
+.topo{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin-top: 0.5vw;
+}
+
+.btn{
+    margin: 0.5vw;
+    width: 5.2vw;
+    height: 5vw;
+    background-color: #3d3dfc;
+    color: white;
+}
+
+.btn:hover{
+    background-color: #3030c9;
+}
+
+.mao{
+    width: 4vw;
+    height: 4vw;
+}

@@ -1,0 +1,32 @@
+create database empresa;
+create table empresa.funcionario(
+	idfunc int not null auto_increment,
+    matricula int not null,
+    nome_func varchar(50) not null,
+    dtnasc date not null,
+    Primary key(idfunc)
+) ENGINE = InnoDB;
+
+create table empresa.dependentes(
+	iddependente int not null auto_increment,
+    nomedepen varchar(50) not null,
+    idfunc int not null,
+    Primary Key(iddependente),
+    Constraint FK_funcionario Foreign Key(idfunc) References funcionario (idfunc)
+) ENGINE = InnoDB;
+
+create table empresa.curso(
+	idcurso int not null auto_increment,
+    nomecurso varchar(50) not null,
+    anocurso year(4) not null,
+    Primary Key(idcurso)
+)ENGINE = InnoDB;
+
+create table empresa.funcionariocurso(
+	idfunccurso int not null auto_increment,
+    idfunc int not null,
+    idcurso int not null,
+    Primary Key(idfunccurso),
+    Constraint FK_curso Foreign Key(idcurso) References curso (idcurso),
+    Constraint FK_funcionario Foreign Key(idfunc) References funcionario (idfunc)
+)ENGINE = InnoDB;

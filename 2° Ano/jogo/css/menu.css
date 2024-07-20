@@ -1,0 +1,56 @@
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
+
+*{
+    margin: 0;
+    padding: 0;
+}
+
+body{
+    background-repeat: no-repeat;
+    background-size: 100%;
+}
+
+.container{
+    display: grid;
+    grid-template-rows: auto auto;
+
+    margin-left: 35vw;
+    margin-top: 10vw;
+
+    width: 30vw;
+    height: 15vw;
+    
+    background-color: #000;
+    border-radius: 1vw;
+}
+
+.titulomenu{
+    font-size: 3.5vw;
+    font-family: Bebas Neue;
+    margin: auto;
+    color: white;
+}
+
+.link{
+    width: 5.5vw;
+    height: 3.5vw;
+    margin: auto;
+
+    font-size: 2.5rem;
+    font-family: Bebas Neue;
+    text-decoration: none;
+    color: black;
+
+    background-color: #b60404;
+    border-radius: 0.5vw;
+}
+
+.start{
+    display: flex;
+    justify-content: center;
+    margin-top: 0.4vw;
+}
+
+.link:hover{
+    background-color: #950303;
+}
