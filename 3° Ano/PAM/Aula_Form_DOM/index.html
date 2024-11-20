@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Identificação de Pessoa</title>
+    <link rel="stylesheet" href="estilo.css">
+</head>
+<body>
+    <h1>Formulário de Identificação de Pessoa</h1>
+    <form id="personForm">
+        <label for="name">Nome:</label>
+        <input type="text" name="name" id="name" required><br/><br/>
+        <label for="gender">Sexo:</label>
+        <select name="gender" id="gender" required>
+            <option value="">Selecione</option>
+            <option value="male">Masculino</option>
+            <option value="female">Feminino</option>
+        </select><br/><br/>
+        <label for="age">Idade</label>
+        <input type="number" name="age" id="age" required><br/><br/>
+        <input type="submit" value="Enviar">
+    </form>
+    <div id="result"></div>
+
+    <script src="script.js"></script>
+</body>
+</html>

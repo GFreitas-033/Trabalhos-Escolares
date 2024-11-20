@@ -1,0 +1,129 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200&display=swap');
+
+*{
+    margin: 0 0;
+    padding: 0 0;
+}
+
+body{
+    font-family: Poppins;
+    font-size: 1rem;
+}
+
+.container-2{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100vw;
+    height: 100vh;
+    text-align: center;
+    background-color: black;
+    font-size: 10rem;
+    color: red;
+}
+.container-3{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100vw;
+    height: 100vh;
+    text-align: center;
+    background-color: green;
+    font-size: 5rem;
+}
+
+.container{
+    width: 100vw;
+    height: 100vh;
+    background-color: #ccc;
+}
+
+.imagem{
+    display: flex;
+    justify-content: center;
+    width: 100vw;
+}
+
+.palavra{
+    display: flex;
+    justify-content: center;
+    width: 100vw;
+    margin-top: 0.5rem;
+}
+
+.pSecreta{
+    width: 3.2rem;
+    height: 3.2rem;
+    margin-right: 0.4rem;
+    background-color: #b01f1f;
+    font-size: 2.3rem;
+    border: none;
+    border-radius: 0.5rem;
+}
+
+.dicaPalavra{
+    width: 100vw;
+    text-align: center;
+    font-size: 1.2rem;
+    color: #b01f1f;
+    margin-top: 0.5rem;
+    margin-bottom: 0.8rem;
+}
+
+.teclas{
+    width: 100vw;
+    display: flex;
+    justify-content: center;
+}
+
+.tecla{
+    width: 2.6rem;
+    height: 2.6rem;
+    font-size: 2rem;
+    color: #b01f1f;
+    background-color: black;
+    border: none;
+    margin: 0.3rem 0.3rem;
+    border-radius: 0.5rem;
+}
+
+.mudaTeclaC{
+    width: 2.6rem;
+    height: 2.6rem;
+    font-size: 2rem;
+    color: white;
+    background-color: #0909d6;
+    border: none;
+    margin: 0.3rem 0.3rem;
+    border-radius: 0.5rem;
+}
+.mudaTeclaE{
+    width: 2.6rem;
+    height: 2.6rem;
+    font-size: 2rem;
+    color: white;
+    background-color: #b01f1f;
+    border: none;
+    margin: 0.3rem 0.3rem;
+    border-radius: 0.5rem;
+}
+
+.some{
+    display: none;
+}
+
+.action{
+    display: flex;
+    justify-content: center;
+    width: 100vw;
+}
+
+.comeca, .recomeca{
+    margin: 0.5rem;
+    border: none;
+    width: 5vw;
+    height: 6.4vh;
+    background-color: blue;
+    color: yellow;
+    font-size: 1rem;
+}

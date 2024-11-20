@@ -1,0 +1,13 @@
+/*Atividade 3*/
+DELIMITER //
+
+CREATE TRIGGER DataUltimaVenda
+AFTER INSERT ON Vendas
+FOR EACH ROW
+BEGIN
+    UPDATE Produtos
+    SET data_ultima_venda = NEW.data_venda
+	WHERE id = NEW.id;
+END;
+
+// DELIMITER ;

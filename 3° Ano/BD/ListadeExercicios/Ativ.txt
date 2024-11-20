@@ -1,0 +1,101 @@
+--Ativ 1
+/*Não Funcional*/
+SELECT nome
+FROM Departamento
+WHERE id_departamento = (
+    SELECT id_departamento
+    FROM Projeto
+    WHERE (
+        SELECT SUM(custo) AS custoRH
+        FROM Projeto
+        WHERE id_departamento = 10
+    ) > ALL(
+        SELECT SUM(custo) AS totalCusto
+        FROM Projeto
+        GROUP BY id_departamento
+    )
+);
+/*Funcional*/
+SELECT nome
+FROM Departamento
+WHERE id_departamento = (
+    SELECT id_departamento
+    FROM Projeto
+    GROUP BY id_departamento
+    HAVING SUM(custo) = (
+        SELECT MAX(totalCusto)
+        FROM (
+            SELECT SUM(custo) AS totalCusto
+            FROM Projeto
+            GROUP BY id_departamento
+        ) AS maxCusto
+    )
+);
+
+--Ativ 2
+SELECT (SELECT nome 
+		FROM Departamento 
+        WHERE id_departamento = Funcionario.id_departamento) AS Departamentos,
+AVG(salario) AS Media_salario
+FROM Funcionario
+GROUP BY id_departamento;
+
+-- Ativ 3
+SELECT nome FROM Funcionario WHERE salario<(
+	SELECT AVG(salario) AS Media_salario FROM Funcionario
+);
+
+--Ativ 4
+SELECT sum(custo) AS CustoTotal
+FROM Projeto
+WHERE id_departamento = ANY (
+	SELECT id_departamento FROM Funcionario
+);
+
+-- Ativ 5
+SELECT (salario * 0.1)+salario FROM Funcionario;
+
+--Ativ 6
+SELECT nome,(
+	SELECT count(id_projeto)
+	FROM Projeto
+    WHERE Projeto.id_departamento = Departamento.id_departamento
+) AS TotalProjetos
+FROM Departamento;
+
+--Ativ 7
+SELECT count(id_funcionario)/count(id_departamento) AS mediaFuncionario
+FROM Funcionario
+WHERE id_departamento IN (
+	SELECT id_departamento 
+	FROM Departamento);
+
+--Ativ 8
+SELECT nome
+FROM Departamento
+WHERE (
+	SELECT count(id_departamento)
+    FROM Funcionario
+    WHERE id_departamento IN (
+		SELECT id_departamento
+        FROM Departamento)
+    ) > 3;
+
+--Ativ 9
+SELECT SUM(custo) AS custoTotal
+FROM Projeto
+WHERE id_departamento = ANY(SELECT id_departamento
+    FROM Funcionario
+    WHERE salario > (
+        SELECT AVG(salario)
+        FROM Funcionario
+));
+
+--Ativ 10
+SELECT AVG(salario) AS salarioMedio
+FROM Funcionario
+WHERE id_departamento = ANY (
+    SELECT id_departamento
+    FROM Projeto
+    WHERE custo > 50000
+);
