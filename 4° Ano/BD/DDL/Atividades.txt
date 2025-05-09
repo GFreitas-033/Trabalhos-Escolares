@@ -1,0 +1,98 @@
+-- 1
+CREATE DATABASE Atividade;
+
+USE Atividade;
+
+CREATE TABLE produtos(
+        id_produto int not null auto_increment,
+    nome_produto varchar(100) not null,
+    preco decimal(8,2) not null,
+    descricao_produto text not null,
+    Primary Key(id_produto)
+); 
+
+CREATE TABLE categorias(
+	id_categoria int not null,
+    nome_categoria varchar(100) not null,
+    Primary Key(id_categoria)
+);
+
+CREATE TABLE produto_categoria(
+   id_produto_categoria int not null auto_increment,
+    id_produto int not null,
+    id_categoria int not null,
+    descricao text not null,
+    Primary Key(id_produto_categoria),
+    CONSTRAINT fk_produto Foreign Key(id_produto) References produtos(id_produto),
+    CONSTRAINT fk_categoria Foreign Key(id_categoria) References categorias(id_categoria)
+);
+
+-- 2
+ALTER TABLE produto_categoria ADD FULLTEXT(descricao);
+
+-- 3
+ALTER TABLE produtos ADD estoque int DEFAULT 0;
+
+-- 4
+ALTER TABLE produtos ADD CONSTRAINT chk_preco CHECK(preco>=0); 
+
+-- 5
+ALTER TABLE protudos ADD CONSTRAINT unq_categoria UNIQUE(nome_categoria);
+
+-- 6
+ALTER TABLE produtos MODIFY nome_produto varchar(150) NOT NULL;
+
+-- 7
+CREATE INDEX idx_nome_produto ON produtos(nome_produto);
+
+-- 8
+ALTER TABLE produtos ADD fabricante varchar(255);
+CREATE INDEX idx_fabricante ON produtos(fabricante);
+
+-- 9
+ALTER TABLE produto_categoria DROP CONSTRAINT fk_categoria;
+ALTER TABLE produto_categoria DROP id_categoria;
+ALTER TABLE categorias MODIFY id_categoria int not null auto_increment;
+ALTER TABLE produto_categoria ADD id_categoria int not null;
+ALTER TABLE produto_categoria ADD CONSTRAINT fk_categoria FOREIGN KEY(id_categoria) REFERENCES categorias(id_categoria);
+
+-- 10
+ALTER TABLE categorias DROP CONSTRAINT unq_categoria;
+
+-- 11
+CREATE TABLE fornecedor(
+	id_fornecedor int not null auto_increment,
+    nome_fornecedor varchar(100) not null,
+    Primary Key(id_fornecedor)
+);
+ALTER TABLE produtos ADD id_fornecedor int not null;
+ALTER TABLE produtos ADD CONSTRAINT fk_fornecedor FOREIGN KEY(id_fornecedor) REFERENCES fornecedor(id_fornecedor);
+
+-- 12
+CREATE INDEX idx_nome_produto ON produtos(nome_produto);
+CREATE INDEX idx_preco_produto ON produtos(preco);
+
+-- 13
+ALTER TABLE produtos DROP CONSTRAINT chk_estoque;
+
+-- 14
+ALTER TABLE produtos CHANGE descricao_produto detalhes text not null;
+
+-- 15
+ALTER TABLE produtos ADD FULLTEXT(nome_produto);
+ALTER TABLE produtos ADD FULLTEXT(detalhes);
+
+-- 16
+ALTER TABLE produtos MODIFY preco DECIMAL(8,2) NOT NULL DEFAULT 0.00;
+
+-- 17
+ALTER TABLE produto_categoria ADD CONSTRAINT chk_descricao CHECK (CHAR_LENGTH(descricao) >= 10);
+
+-- 18
+ALTER TABLE produtos DROP CONSTRAINT chk_preco;
+
+-- 19
+ALTER TABLE produtos ADD CONSTRAINT unq_nome_produto  UNIQUE(nome_produto);
+
+-- 20
+ALTER TABLE produtos RENAME TO item_produto;

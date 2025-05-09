@@ -1,0 +1,112 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;700&display=swap");
+* {
+  margin: 0 0;
+  padding: 0 0;
+}
+
+body {
+  background-color: #1f1e1e;
+  font-family: Poppins;
+}
+
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100vw;
+  height: 100vh;
+}
+
+.align-dentro {
+  margin-top: 1rem;
+}
+
+.label {
+  font-size: 1.6rem;
+}
+
+.cadastrar {
+  text-decoration: none;
+  font-size: 0.9rem;
+  color: blue;
+}
+
+#btn {
+  font-size: 1.3rem;
+  color: white;
+  background-color: black;
+  margin: 1rem;
+  padding: 0.6rem;
+  border-radius: 0.5rem;
+  border: none;
+}
+
+#btn:hover {
+  color: black;
+  background-color: white;
+  cursor: pointer;
+}
+
+@media screen and (min-width: 320px) {
+  #form1 {
+    margin-top: 20px;
+    background-color: #ccc;
+    width: 300px;
+    height: 290px;
+    border-radius: 1rem;
+    border: 0.2rem solid red;
+    text-align: center;
+  }
+
+  #login,
+  #senha {
+    width: 250px;
+    height: 25px;
+    font-size: 1rem;
+  }
+
+  .container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100vw;
+    height: 90vh;
+  }
+}
+@media screen and (min-width: 720px) {
+  #form1 {
+    margin-top: 20px;
+    background-color: #ccc;
+    width: 300px;
+    height: 300px;
+    border-radius: 1rem;
+    border: 0.2rem solid red;
+    text-align: center;
+  }
+
+  #login,
+  #senha {
+    width: 250px;
+    height: 25px;
+    font-size: 1rem;
+  }
+}
+
+@media screen and (min-width: 1200px) {
+  #form1 {
+    margin-top: 20px;
+    background-color: #ccc;
+    width: 450px;
+    height: 300px;
+    border-radius: 1rem;
+    border: 0.2rem solid red;
+    text-align: center;
+  }
+
+  #login,
+  #senha {
+    width: 350px;
+    height: 25px;
+    font-size: 15px;
+  }
+}

@@ -6,89 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Mercado Express</title>
-    <style>
-        a{
-            text-decoration: none;
-            color: #ccc;
-            margin: 0.5rem;
-        }
-
-        span{
-            color: #6E6E6E;
-        }
-
-        p{
-            font-size: 0.8rem;
-        }
-
-        .roda1{
-            background-color: #333;
-            color: #ccc;
-            display: grid;
-            grid-template-columns: 1fr 2fr;
-        }
-
-        .roda2{
-            background-color: #333;
-            color: #ccc;
-            padding: 1rem;
-            display: grid;
-            grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
-        }
-
-        .rodape{
-            display: grid;
-            grid-template-columns: auto auto;
-            grid-template-rows: auto auto auto;
-            background-color: #333;
-           
-        }
-
-        .title{
-            margin-left: 4rem;
-        }
-
-        .divsrodape{
-            margin: 2rem;
-        }  
-
-        .flex{
-            display: flex;
-            align-items: center;
-            margin-left: 5rem;
-        }
-
-        .like{
-            width: 2.5rem;
-            height: 2rem;
-            margin: 0.5rem;
-        }
-
-        .icon{ 
-            width: 2rem;
-            height: 2rem;
-            margin: 0.5rem;
-        }
-
-        #email{
-            background-color: #595959;
-            padding: 0.6rem;
-        }
-
-        #email::placeholder{
-            color: #ccc;
-        }
-
-        #enviar{
-            background-color: #FEE842;
-            color: black;
-            cursor: pointer;
-        }
-
-        #enviar:hover{
-            background-color: #e4cd23;
-        }   
-    </style>
+    <link rel="stylesheet" href="css/footer.css">
 </head>
 <body>
     <footer class="roda1">
@@ -99,32 +17,29 @@
                 <a href="quem_somos.php"><p>Quem Somos</p></a>
                 <a href="https://rastreamento.correios.com.br/app/index.php"><p>Entrega</p></a>
                 <a href="main.php"><p>Our Products</p></a>
-                <a href="#"><p>Cart</p></a>
-                <a href="https://web.whatsapp.com/"><p>Contact Us</p></a>
+                <a href="carrinho.php"><p>Cart</p></a>
+                <a href="https://www.instagram.com/guilhermefreitas033/?next=%2F"><p>Contact Us</p></a>
             </div>
         </section>
         <section class="divsrodape">
-            <h1 class="">Newsletter</h1>
+            <h1>Newsletter</h1>
             <div class="rodape">
                 <span>Sing up today for the latest news and updates</span>
                 <br>
-                <input type="text" id="email" placeholder="Enter your E-mail">
+                <input type="email" id="email" placeholder="Enter your E-mail">
                 <input type="submit" value="SUBSCRIBE" id="enviar">
             </div>
         </section>
     </footer>
 
-    <hr color="#3D3E40" margin="0" padding="-1rem">
-    
+    <hr color="#3D3E40">
+
     <footer class="roda2">
             <section class="flex">
-                <img src="img/icone01.png" class="like"><p>9.4K</p>
+                <img src="img/icone02.png" class="icon"><p>(14)99772-6771<p>
             </section>
             <section class="flex">
-                <img src="img/icone02.png" class="icon"><p>+1 718-999-3939<p>
-            </section>
-            <section class="flex">
-                <img src="img/icone03.png" class="icon"><p>info@demolink.org<p>
+                <img src="img/icone03.png" class="icon"><p>guilherme.freitas94@etec.sp.gov.br<p>
             </section>
                 
             <section class="flex">

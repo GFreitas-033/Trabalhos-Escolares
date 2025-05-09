@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Cadastro Mercado Express</title>
+    <link rel="stylesheet" href="cadastro.css" />
+  </head>
+  <body>
+    <div class="container">
+      <form action="cadastro.php" method="post" id="form2">
+        <div class="align-dentro">
+          <label>E-mail</label><br /><input
+            type="email"
+            name="email"
+            id="email"
+            class="preencher"
+            required
+          /><br />
+          <label>Senha</label><br /><input
+            type="password"
+            name="senha"
+            id="senha"
+            class="preencher"
+            required
+          /><br />
+          <label>Nome</label><br /><input
+            type="text"
+            name="nome"
+            id="nome"
+            class="preencher"
+            required
+          /><br />
+          <label>Sobrenome</label><br /><input
+            type="text"
+            name="sobrenome"
+            id="sobrenome"
+            class="preencher"
+            required
+          /><br />
+          <label>CPF</label><br /><input
+            type="text"
+            name="cpf"
+            id="cpf"
+            class="preencher"
+            placeholder="Coloque Apenas Números"
+            required
+          /><br />
+          <label>Telefone</label><br /><input
+            type="text"
+            name="telefone"
+            id="telefone"
+            class="preencher"
+            placeholder="Coloque Apenas Números e com o DDD"
+            required
+          /><br />
+          <a href="../login/login.html" class="logar"
+            >Já Possui Conta?<br />Clique aqui para Logar</a
+          ><br />
+          <input type="submit" value="Cadastrar" class="btn" />
+        </div>
+      </form>
+    </div>
+  </body>
+</html>

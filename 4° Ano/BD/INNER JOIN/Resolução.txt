@@ -1,0 +1,45 @@
+-- 1 Quais clientes fizeram pedidos (lista de nomes de clientes e número do pedido)?
+SELECT c.customerName, o.orderNumber FROM customers c
+INNER JOIN orders o ON o.customerNumber = c.customerNumber;
+
+-- 2 Liste todos os pedidos, mesmo que não haja detalhes cadastrados (número do pedido + orderLineNumber)
+SELECT o.orderNumber, od.orderLineNumber FROM orders o 
+LEFT JOIN orderdetails od ON od.orderNumber = o.orderNumber;
+
+-- 3 Exiba todos os detalhes de pedido cujo produto não existe mais (supondo products sem registro)
+SELECT * FROM orderdetails od
+LEFT JOIN products p ON p.productCode = od.productCode;
+
+-- 4 Liste todos os produtos que já foram pedidos (código e nome)
+SELECT p.productCode, p.productName FROM products p 
+INNER JOIN orderdetails od ON od.productCode = p.productCode;
+
+-- 5 Liste todos os funcionários (nome e funcionário ao qual reporta) e, caso não haja superior, mostre mesmo assim
+SELECT e.firstName AS funcNome, e.lastName AS funcSobrenome, 
+s.firstName AS superiorNome, s.lastName AS superiorSobrenome FROM employees e
+LEFT JOIN employees s ON s.employeeNumber = e.reportsTo;
+
+-- 6 Apresente todos os pedidos e os respectivos nomes de clientes, incluindo pedidos órfãos (sem cliente)
+SELECT o.orderNumber, c.customerName FROM orders o
+LEFT JOIN customers c ON c.customerNumber = o.customerNumber;
+
+-- 7 Quais funcionários nunca representaram um cliente (venda)?
+SELECT e.employeeNumber, e.firstName, e.lastName FROM employees e
+LEFT JOIN customers c ON c.salesRepEmployeeNumber = e.employeeNumber
+WHERE c.salesRepEmployeeNumber IS NULL;
+
+-- 8 Liste todos os clientes e o total de valor comprado (soma de quantityOrdered * priceEach), incluindo clientes que ainda não compraram
+SELECT c.customerName, (od.quantityOrdered * od.priceEach) AS valorTotal FROM customers c
+LEFT JOIN orders o ON o.customerNumber = c.customerNumber
+LEFT JOIN orderdetails od ON od.orderNumber = o.orderNumber;
+
+-- 9 Exiba todos os pedidos feitos após '2004-01-01' e quem os atendeu (nome do funcionário), incluindo pedidos sem atendente atribuído
+SELECT o.orderNumber, e.firstName, e.lastName FROM orders o
+LEFT JOIN customers c ON c.customerNumber = o.customerNumber
+LEFT JOIN employees e ON e.employeeNumber = c.salesRepEmployeeNumber
+WHERE o.orderDate > '2004-01-01';
+
+-- 10 Quais produtos nunca foram solicitados em nenhum pedido?
+SELECT p.productCode, p.productName FROM products p
+LEFT JOIN orderdetails od ON od.productCode = p.productCode
+WHERE od.productCode IS NULL;

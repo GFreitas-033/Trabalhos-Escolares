@@ -1,0 +1,11 @@
+ALTER TABLE livros 
+					ADD ano_publicacaoo INT; -- Adiciona
+					MODIFY titulo varchar(300); -- MODIFICA a coluna mas não o nome
+                    CHANGE auto nome_autor varchar(200); -- Muda o Nome TB
+                    RENAME TO acervo; -- Troca o nome da Tabela
+                    DROP ano_publicacao; -- Tira a coluna
+                    ADD Primary Key(id); -- Adiciona uma Primary Key
+                    
+
+conteudo text not null,
+KEY(conteudo) (FULLTEXT)

@@ -1,0 +1,11 @@
+1) R:  x = 3, y = 4 e p = endereço de y
+
+2) R:
+void main(){
+   int x, *p;
+
+   x = 100;
+   p = &x;
+
+   printf("Valor de p: %d.\n", *p);      
+}

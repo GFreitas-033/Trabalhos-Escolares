@@ -1,0 +1,181 @@
+hr{
+    margin: 0;
+    padding: 1px;
+}
+
+span{
+    color: #6E6E6E;
+}
+
+.rodape a{
+    text-align: center;
+}
+
+.title{
+    text-align: center;
+}
+
+
+
+.flex{
+    display: flex;
+    align-items: center;
+}
+
+#email::placeholder{
+    color: #ccc;
+}
+
+#enviar{
+    background-color: #FEE842;
+    color: black;
+    cursor: pointer;
+    border: none;
+}
+#enviar:hover{
+    background-color: #e4cd23;
+}   
+
+@media screen and (min-width: 320px){
+    a{
+        text-decoration: none;
+        color: #ccc;
+        margin: 5px;
+    }
+
+    p{
+        font-size: 12px;
+    }
+
+    .roda1{
+        background-color: #333;
+        color: #ccc;
+        display: grid;
+        grid-template-columns: auto;
+        
+    }
+
+    .divsrodape{
+        margin: 16px;
+    }    
+
+    .rodape{
+        display: grid;
+        grid-template-columns: auto auto;
+        grid-template-rows: auto auto auto;
+        background-color: #333;
+    }
+    
+
+    .roda2{
+        background-color: #333;
+        color: #ccc;
+        padding: 10px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .icon{ 
+        width: 30px;
+        height: 30px;
+        margin: 5px;
+    }
+}
+
+@media screen and (min-width: 720px){
+    a{
+        text-decoration: none;
+        color: #ccc;
+        margin: 5px;
+    }
+
+    p{
+        font-size: 12px;
+    }
+
+    .roda1{
+        background-color: #333;
+        color: #ccc;
+        display: grid;
+        grid-template-columns: 2fr 2fr;
+    }
+
+    .divsrodape{
+        margin: 16px;
+    }    
+
+    .rodape{
+        display: grid;
+        grid-template-columns: auto auto;
+        grid-template-rows: auto auto auto;
+        background-color: #333;
+    }
+
+
+    .roda2{
+        background-color: #333;
+        color: #ccc;
+        padding: 10px;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-around;
+    }
+
+    .icon{ 
+        width: 30px;
+        height: 30px;
+        margin: 5px;
+    }
+}        
+
+@media screen and (min-width: 1200px){
+    a{
+        text-decoration: none;
+        color: #ccc;
+        margin: 5px;
+    }
+
+    p{
+        font-size: 14px;
+    }
+
+    #email{
+        background-color: #595959;
+        padding: 0.6rem;
+    }
+    
+    .roda1{
+        background-color: #333;
+        color: #ccc;
+        display: grid;
+        grid-template-columns: 1fr 2fr;
+    }
+
+    .divsrodape{
+        margin: 20px;
+    }    
+
+    .rodape{
+        display: grid;
+        grid-template-columns: auto auto;
+        grid-template-rows: auto auto auto;
+        background-color: #333;
+    }
+
+
+    .roda2{
+        background-color: #333;
+        color: #ccc;
+        padding: 10px;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-around;
+    }
+
+    .icon{ 
+        width: 30px;
+        height: 30px;
+        margin: 5px;
+    }
+}
