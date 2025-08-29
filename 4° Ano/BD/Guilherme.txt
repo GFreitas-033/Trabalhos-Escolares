@@ -1,0 +1,123 @@
+-- 1- Liste os nomes dos clientes da tabela customers que possuem ao menos um pedido registrado na tabela orders. CORRETO
+SELECT c.customerName FROM customers c
+WHERE c.customerNumber IN (
+	SELECT o.customerNumber FROM orders o
+)
+ORDER BY c.customerName;
+
+-- 2- Liste os nomes dos produtos da tabela products que nunca foram incluídos em pedidos na tabela orderdetails.   CORRETO
+SELECT p.productName FROM products p
+WHERE p.productCode NOT IN (
+	SELECT od.productCode FROM orderdetails od
+)
+ORDER BY p.productName;
+
+-- 3- Liste os nomes dos clientes da tabela customers que compraram produtos da mesma linha de produto (productLine) do produto com código 'S10_1949' na tabela products.  INCORRETO
+SELECT c.customerName FROM customers c
+WHERE c.customerNumber IN (
+	SELECT o.customerNumber FROM orders o
+    WHERE o.orderNumber IN (
+		SELECT od.orderNumber FROM orderdetails od
+        WHERE od.productCode IN (
+			SELECT p.productCode FROM products p
+            WHERE p.productLine IN (
+				SELECT pl.productLine FROM productlines pl
+            )
+            AND p.productCode = 'S10_1949'
+        )
+    )
+)
+ORDER BY c.customerName;
+
+Subconsulta desnecessária e incorreta:
+O filtro p.productLine IN (SELECT pl.productLine FROM productlines pl) é redundante, pois productLine em products já referencia a tabela productlines.
+Isso não filtra nada, pois pega todos os productLine existentes.
+Filtragem incorreta:
+Você quer clientes que compraram produtos da mesma linha do produto 'S10_1949', mas a consulta filtra p.productCode = 'S10_1949' ao mesmo tempo que filtra por qualquer productLine da tabela productlines. Isso restringe a subconsulta para o próprio produto 'S10_1949', o que não atende ao enunciado.
+
+-- 4- Liste os códigos dos escritórios da tabela offices cujos funcionários (tabela employees) atenderam clientes (tabela customers) que compraram produtos da linha 'Planes' (tabela products).	CORRETO
+
+SELECT oc.officeCode FROM offices oc
+INNER JOIN employees e ON oc.officeCode = e.officeCode
+WHERE e.employeeNumber IN (
+	SELECT c.salesRepEmployeeNumber FROM customers c
+    WHERE c.customerNumber IN (
+		SELECT o.customerNumber FROM orders o
+        WHERE o.orderNumber IN (
+			SELECT od.orderNumber FROM orderdetails od
+            WHERE od.productCode IN (
+				SELECT p.productCode FROM products p
+                WHERE p.productLine = 'Planes'
+            )
+        )
+    )
+)
+GROUP BY oc.officeCode;
+
+-- 5- Liste os nomes dos produtos da tabela products que foram vendidos a clientes da França registrados na tabela customers.		CORRETO
+SELECT p.productName FROM products p
+WHERE p.productCode IN (
+	SELECT od.productCode FROM orderdetails od
+    WHERE od.orderNumber IN (
+		SELECT o.orderNumber FROM orders o
+        WHERE o.customerNumber IN (
+			SELECT c.customerNumber FROM customers c
+            WHERE c.country = 'France'
+        )
+    )
+)
+ORDER BY p.productName;
+
+-- 6- Liste os números dos pedidos da tabela orders que possuem pelo menos um item na tabela orderdetails.		CORRETO
+SELECT o.orderNumber FROM orders o
+WHERE o.orderNumber IN (
+	SELECT od.orderNumber FROM orderdetails od
+)
+ORDER BY o.orderNumber;
+
+
+-- 7- Liste os nomes dos produtos da tabela products vendidos para clientes da cidade 'Madrid', presente na tabela customers.			CORRETO
+SELECT p.productName FROM products p
+WHERE p.productCode IN (
+	SELECT od.productCode FROM orderdetails od
+    WHERE od.orderNumber IN (
+		SELECT o.orderNumber FROM orders o
+        WHERE o.customerNumber IN (
+			SELECT c.customerNumber FROM customers c
+            WHERE c.city = 'Madrid'
+        )
+    )
+)
+ORDER BY p.productName;
+
+-- 8- Liste os nomes dos clientes da tabela customers que possuem representantes de vendas (tabela employees) lotados no escritório de código '1' (tabela offices). INCORRETO
+SELECT c.customerName FROM customers c
+WHERE c.salesRepEmployeeNumber IN (
+	SELECT e.employeeNumber FROM employees e
+    WHERE e.officeCode IN (
+		SELECT oc.officeCode FROM offices oc
+    )
+)
+ORDER BY c.customerName;
+
+-- 9- Liste os nomes dos funcionários da tabela employees que são representantes de clientes da tabela customers com pedidos registrados na tabela orders.		CORRETO
+SELECT e.firstName, e.lastName FROM employees e
+WHERE e.employeeNumber IN (
+	SELECT c.salesRepEmployeeNumber FROM customers c
+    WHERE c.customerNumber IN (
+		SELECT o.customerNumber FROM orders o
+    )
+)
+ORDER BY e.firstName;
+
+-- 10- Liste os nomes dos clientes da tabela customers que compraram produtos com o mesmo código (productCode) de um dos   INCORRETO
+produtos vendidos no pedido de número 10100 da tabela orders.
+SELECT c.customerName FROM customers c
+WHERE c.customerNumber IN (
+	SELECT o.customerNumber FROM orders o
+    INNER JOIN orderdetails od ON o.orderNumber = od.orderNumber
+    WHERE od.productCode IN (
+		SELECT od2.productCode FROM orderdetails od2
+    )
+	AND o.orderNumber = 10100
+);

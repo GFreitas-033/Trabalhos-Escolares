@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project-private xmlns="http://www.netbeans.org/ns/project-private/1">
+    <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
+    <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
+        <group>
+            <file>file:/C:/xampp/htdocs/CRUD-ProdutoMVC/App/App.php</file>
+            <file>file:/C:/xampp/htdocs/CRUD-ProdutoMVC/App/Lib/Sessao.php</file>
+            <file>file:/C:/xampp/htdocs/CRUD-ProdutoMVC/index.php</file>
+            <file>file:/C:/xampp/htdocs/CRUD-ProdutoMVC/App/Models/DAO/BaseDAO.php</file>
+            <file>file:/C:/xampp/htdocs/CRUD-ProdutoMVC/App/Controllers/ProdutoController.php</file>
+            <file>file:/C:/xampp/htdocs/CRUD-ProdutoMVC/App/Lib/Conexao.php</file>
+            <file>file:/C:/xampp/htdocs/CRUD-ProdutoMVC/App/Models/Entidades/Produto.php</file>
+            <file>file:/C:/xampp/htdocs/CRUD-ProdutoMVC/App/Models/DAO/ProdutoDAO.php</file>
+            <file>file:/C:/xampp/htdocs/CRUD-ProdutoMVC/App/Controllers/Controller.php</file>
+            <file>file:/C:/xampp/htdocs/CRUD-ProdutoMVC/App/Views/produto/listar.php</file>
+            <file>file:/C:/xampp/htdocs/CRUD-ProdutoMVC/App/Controllers/HomeController.php</file>
+        </group>
+    </open-files>
+</project-private>

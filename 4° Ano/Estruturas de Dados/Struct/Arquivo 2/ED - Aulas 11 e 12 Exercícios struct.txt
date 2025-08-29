@@ -1,0 +1,14 @@
+Exercícios com struct:
+
+1) Escreva uma função que utiliza struct e receba um número inteiro que representa um intervalo de tempo medido em minutos e devolva o número equivalente de dias, horas e minutos (por exemplo, 140 minutos equivalem a 0 dia, 2 horas e 20 minutos). 
+Use uma struct como a seguinte:
+struct dhm {
+   int dia
+   int hora;
+   int min;
+};
+
+
+2) Foi realizada que coletou dados de habitantes de uma região. De cada habitante foram coletados os dados: idade, sexo, salário e número de filhos. 
+Crie a estrutura de dados adequada para armazenar estas informações e faça uma função que armazene as informações digitadas pelo usuário na estrutura de dados criada. 
+Faça também uma função que calcula a média do salário dos habitantes.

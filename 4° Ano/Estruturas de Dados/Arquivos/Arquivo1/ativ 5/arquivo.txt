@@ -1,0 +1,5 @@
+Nome	Nota1	Nota2	Media
+Gui	10.0	10.0	10.0
+Sau	10.0	5.0	7.5
+Ver	10.0	8.0	9.0
+Leo	0.0	5.0	2.5

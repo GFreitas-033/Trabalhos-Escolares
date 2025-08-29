@@ -1,0 +1,8 @@
+Multiplicacao do Indice 1: 1 X 1 = 1
+Multiplicacao do Indice 2: 2 X 2 = 4
+Multiplicacao do Indice 3: 3 X 3 = 9
+Multiplicacao do Indice 4: 4 X 4 = 16
+Multiplicacao do Indice 5: 5 X 5 = 25
+Multiplicacao do Indice 6: 6 X 6 = 36
+Multiplicacao do Indice 7: 7 X 7 = 49
+Multiplicacao do Indice 8: 8 X 8 = 64
