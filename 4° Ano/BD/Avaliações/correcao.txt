@@ -1,0 +1,97 @@
+SELECT 
+    o.orderNumber,
+    SUM(od.quantityOrdered * od.priceEach) AS totalPedido
+FROM orders o
+JOIN orderdetails od ON o.orderNumber = od.orderNumber
+GROUP BY o.orderNumber
+HAVING totalPedido > 50000;
+
+-x-x-x-x-x-x-x-x-x
+
+SELECT 
+    c.customerNumber,
+    c.customerName,
+    COUNT(o.orderNumber) AS totalPedidos
+FROM customers c
+JOIN orders o ON c.customerNumber = o.customerNumber
+GROUP BY c.customerNumber, c.customerName
+HAVING totalPedidos > 5;
+
+
+SELECT 
+    c.customerNumber,
+    c.customerName,
+    COUNT(o.orderNumber) AS totalPedidos
+FROM customers c
+JOIN orders o ON c.customerNumber = o.customerNumber
+GROUP BY c.customerNumber, c.customerName
+HAVING COUNT(o.orderNumber) > 5;
+
+
+x-x-x-x-x-x-x
+
+SELECT e.firstName, e.employeeNumber, SUM(p.amount) AS total_recebido
+FROM employees e
+INNER JOIN customers c ON c.salesRepEmployeeNumber = e.employeeNumber
+INNER JOIN payments p ON p.customerNumber = c.customerNumber
+GROUP BY e.employeeNumber
+ORDER BY total_recebido DESC
+LIMIT 1;
+
+SELECT 
+    e.employeeNumber,
+    e.firstName,
+    e.lastName,
+    SUM(p.amount) AS totalRecebido
+FROM employees e
+JOIN customers c ON e.employeeNumber = c.salesRepEmployeeNumber
+JOIN payments p ON c.customerNumber = p.customerNumber
+GROUP BY e.employeeNumber, e.firstName, e.lastName
+ORDER BY totalRecebido DESC;
+
+
+
+
+x-x-x-x-x-x-x-x-x-x-x-x-x-x-x
+
+CREATE DEFINER=`root`@`localhost` FUNCTION `TotalPagoCliente`(custNo INT) RETURNS decimal(10,2)
+    DETERMINISTIC
+BEGIN
+  DECLARE total DECIMAL(10,2);
+  SELECT SUM(amount) INTO total
+  FROM payments
+  WHERE customerNumber = custNo;
+  RETURN IFNULL(total,0);
+
+END
+
+
+
+x-x-x-x-x-x-x-x
+
+CREATE DEFINER=`root`@`localhost` FUNCTION `CategoriaPedido`(ordNo INT) RETURNS varchar(20) CHARSET latin1
+    DETERMINISTIC
+BEGIN
+  DECLARE total DECIMAL(10,2);
+  DECLARE categoria VARCHAR(20);
+
+  SELECT SUM(quantityOrdered * priceEach) INTO total
+  FROM orderdetails
+  WHERE orderNumber = ordNo;
+
+  IF total < 10000 THEN
+    SET categoria = 'PEQUENO';
+  ELSEIF total BETWEEN 10000 AND 50000 THEN
+    SET categoria = 'MÉDIO';
+  ELSE
+    SET categoria = 'GRANDE';
+  END IF;
+
+  RETURN categoria;
+END
+
+
+
+
+
+

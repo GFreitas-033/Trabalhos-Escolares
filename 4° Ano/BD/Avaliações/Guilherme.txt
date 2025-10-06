@@ -1,0 +1,86 @@
+-- 1- Liste o número do pedido e o valor total de cada pedido (orders e orderdetails), exibindo apenas os pedidos cujo valor total seja superior a 50.000.
+SELECT o.orderNumber, SUM(od.quantityOrdered * od.priceEach) AS valor_total
+FROM orders o
+INNER JOIN orderdetails od ON o.orderNumber = od.orderNumber
+GROUP BY o.orderNumber
+HAVING valor_total > 50000
+ORDER BY valor_total ASC;
+-- Basicamente é o mesmo código então Correto
+
+-- 2- Liste os clientes (customers) que realizaram mais de 5 pedidos e mostre também o total de pedidos realizados.
+SELECT c.customerNumber, c.customerName, COUNT(o.orderNumber) AS total_pedidos
+FROM customers c
+INNER JOIN orders o ON c.customerNumber = o.customerNumber
+GROUP BY c.customerNumber
+HAVING total_pedidos > 5;
+-- Basicamente é o mesmo código então Correto
+
+-- 3- Liste os funcionários (employees) que atendem clientes com o maior valor total de pagamentos (payments). Traga o nome do funcionário, seu número e o total recebido pelos seus clientes.
+SELECT e.employeeNumber, CONCAT(e.firstName," ", e.lastName) AS nome_completo, SUM(p.amount) AS maior_valor
+FROM employees e
+INNER JOIN customers c ON e.employeeNumber = c.salesRepEmployeeNumber
+INNER JOIN payments p ON c.customerNumber = p.customerNumber
+GROUP BY p.customerNumber
+HAVING MAX(p.amount);
+-- 'Gerard' 'Hernandez';'Euro+ Shopping Channel', '715738.98'
+-- Achei o enunciado meio confuso por isso acabei 'errando', então o codigo ficou quase igual só faltando a função de pegar o unico
+-- Mas achei o resultado pelo teste de mesa
+
+-- 4- Crie uma função chamada TotalPagoCliente que receba o número do cliente e retorne o valor total de pagamentos desse cliente. Em seguida, use essa função para listar o nome de todos os
+-- clientes e o total que cada um já pagou.
+DELIMITER $$
+CREATE FUNCTION TotalPagoCliente(p_customerNumber INT)
+RETURNS DECIMAL(10,2)
+DETERMINISTIC
+BEGIN
+	DECLARE resultado DECIMAL(10,2);
+    
+    SELECT SUM(p.amount) AS valor_total
+    INTO resultado
+    FROM payments p
+    GROUP BY p.customerNumber
+    HAVING p.customerNumber = p_customerNumber;
+    
+    RETURN resultado;
+END $$
+DELIMITER ;
+
+SELECT c.customerName, TotalPagoCliente(c.customerNumber) FROM customers c;
+DROP FUNCTION TotalPagoCliente;
+-- Correto mas talvez ficaria mais claro se eu apenas colocasse um WHERE
+-- Não mudou o resultado
+
+-- 5- Crie uma função chamada CategoriaPedido que receba um número de pedido e retorne uma classificação textual:
+-- "PEQUENO" se o valor do pedido for menor que 10.000,
+-- "MÉDIO" se for entre 10.000 e 50.000,
+-- "GRANDE" se for acima de 50.000.
+-- Liste os pedidos e sua categoria.
+DELIMITER $$
+CREATE FUNCTION CategoriaPedido(p_orderNumber INT)
+RETURNS varchar(255)
+DETERMINISTIC
+BEGIN
+    DECLARE total decimal(10,2);
+    
+    SELECT SUM(od.quantityOrdered * od.priceEach) AS valor_total
+    INTO total
+    FROM orderdetails od
+    GROUP BY od.orderNumber
+    HAVING od.orderNumber = p_orderNumber;
+    
+	IF total < 10000 THEN
+        RETURN 'PEQUENO';
+	END IF;
+	IF total > 10000 AND total < 50000 THEN
+        RETURN 'MÉDIO';
+	END IF;
+	IF total > 50000 THEN
+        RETURN 'GRANDE';
+	END IF;
+END $$
+DELIMITER ;
+
+SELECT o.orderNumber, CategoriaPedido(o.orderNumber) AS categoria FROM orders o;
+DROP FUNCTION CategoriaPedido;
+-- Correto mas talvez ficaria mais claro se eu apenas colocasse um WHERE e tambem eu dei o return direto no if (achei mais facil)
+-- Não mudou o resultado
