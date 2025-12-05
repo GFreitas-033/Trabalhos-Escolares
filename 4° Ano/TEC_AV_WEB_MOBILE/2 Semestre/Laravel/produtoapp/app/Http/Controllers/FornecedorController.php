@@ -130,7 +130,7 @@ class FornecedorController extends Controller
         return redirect('/fornecedor')->with('sucesso', 'Fornecedor Excluído.');
     }//Fim excluir()
 
-    public function pesquisar(Request $req){
+    public function minhaPesquisa(Request $req){
         $nome = $req->input('nome');
         $registros = Fornecedor::where('nome', 'like', '%'.$nome.'%')->get();
         if ($registros->count()==0){
@@ -140,5 +140,21 @@ class FornecedorController extends Controller
         }
         return view('fornecedor.index', compact('registros'));
     }
+    
+    public function pesquisar(Request $request){
+        $termo_busca = $request->get('q');
+        $results = Fornecedor::where('nome', 'like', "%{$termo_busca}%")
+                    ->select('id', 'nome')
+                    ->orderBy('nome')
+                    ->limit(10)
+                    ->get();
 
+        return response()->json($results);
+    }
+
+    public function visualizar(Fornecedor $fornecedor){
+    
+        // dd($fornecedor);
+        return view('fornecedor.visualizar',compact('fornecedor'));
+    }
 }

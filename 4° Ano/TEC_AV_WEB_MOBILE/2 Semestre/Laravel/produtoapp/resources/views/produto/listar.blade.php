@@ -24,7 +24,7 @@
                         <th class="info">Descrição</th>
                         <th class="info">Preço</th>
                         <th class="info">Qtde.</th>
-                        <th class="info">Cadastro</th>
+                        <th class="info">Fornecedor</th>
                         <th class="info"></th>
                     </tr>
                 </thead>
@@ -36,7 +36,7 @@
                             <td>{{ $registro->descricao }}</td>
                             <td>{{ $registro->preco }}</td>
                             <td>{{ $registro->quantidade }}</td>
-                            <td>{{ $registro->updated_at }}</td>
+                            <td><a href="{{ route('fornecedores.visualizar',$registro->fornecedor_id) }}">{{ $registro->fornecedor->nome }}</a></td>
                             <td>
                                 <a href="/produto/editar/{{ $registro->id }}" class="btn btn-info btn-sm">Editar</a>
                                 <a href="/produto/confirmaExcluir/{{ $registro->id }}/{{ $registro->nome }}" class="btn btn-danger btn-sm">Excluir</a>

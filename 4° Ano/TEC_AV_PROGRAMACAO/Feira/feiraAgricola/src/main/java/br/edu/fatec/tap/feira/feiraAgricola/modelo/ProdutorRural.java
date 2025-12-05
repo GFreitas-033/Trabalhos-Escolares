@@ -16,7 +16,7 @@ public class ProdutorRural implements Serializable {
     @Column(nullable = false, length = 50)
     private String municipio;
     @Column(length = 30)
-    private String Bairro;
+    private String bairro;
     @Column(length = 30)
     private String telefone;
     @Transient
@@ -51,11 +51,11 @@ public class ProdutorRural implements Serializable {
     }
 
     public String getBairro() {
-        return Bairro;
+        return bairro;
     }
 
     public void setBairro(String bairro) {
-        Bairro = bairro;
+        this.bairro = bairro;
     }
 
     public String getTelefone() {

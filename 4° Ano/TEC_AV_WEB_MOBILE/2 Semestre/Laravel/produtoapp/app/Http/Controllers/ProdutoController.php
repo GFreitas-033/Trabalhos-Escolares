@@ -4,15 +4,30 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Produto;
+use App\Models\Fornecedor;
 
 class ProdutoController extends Controller
 {
     public function listar(){
-    
+        
         $registros = Produto::all();
-        // dd($registros);
+        //dd($registros);
+
+        // echo '<br><br';
+        // foreach($registros as $key => $produto){
+        //     //print_r($produto->getAttributes());
+        //     //echo '<br><br';
+
+        //     $fornecedor = Fornecedor::where('id',$produto->fornecedor_id)->first();
+        //     //print_r($fornecedor->getAttributes());
+        //     //echo '<hr>';
+
+        //     $registros[$key]['fornecedor_nome']= $fornecedor->nome;
+        // }
+
         return view('produto.listar', compact('registros'));
-    }    
+    }
+
 
     public function cadastrar(){
         
@@ -77,4 +92,22 @@ class ProdutoController extends Controller
         return redirect('/produto/listar')->with('success', 'Produto excluído com sucesso!');
     }
 
+    public function pesquisar(Request $request)
+    {
+        $termo = $request->get('q');
+
+        $results = Produto::where('nome', 'like', "%{$termo}%")
+            ->select('id', 'nome')
+            ->orderBy('nome')
+            ->limit(10)
+            ->get();
+
+        return response()->json($results);
+    }
+
+    public function quantidade($id)
+    {
+        $produto = Produto::find($id);
+        return response()->json($produto ? $produto->quantidade : 0);
+    }
 }

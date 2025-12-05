@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Lista de Produtores</title>
+
+    <!-- Import jQuery -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+    <!-- Import Tailwind CSS -->
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <!-- Import Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+    <!-- Import Materialize JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+</head>
+
+<body>
+    <div class="flex flex-col items-center h-[100dvh] w-full bg-blue-100">
+        <!-- Header da Página -->
+        <nav class="w-full bg-gray-900 text-white shadow-md">
+            <button id="btnProdutos" class="font-bold cursor-pointer hover:bg-gray-600 p-5">Produtos</button>
+            <button id="btnProdutores" class="font-bold cursor-pointer hover:bg-gray-600 p-5">Produtores-Rurais</button>
+        </nav>
+        <!-- Título da Página -->
+        <div class="flex justify-between items-center w-[40%] mt-10">
+            <h2 class="text-xl font-bold">Produtores Cadastrados</h2>
+            <button class="bg-green-600 cursor-pointer hover:bg-green-700 text-white px-4 py-2 rounded shadow"
+                onclick="abrirModal()">
+                + Cadastrar Produtor
+            </button>
+        </div>
+        <!-- Tabela da Página -->
+        <table class="w-[40%] bg-white shadow-lg rounded-lg overflow-hidden mt-6">
+            <thead class="">
+                <tr>
+                    <th class="bg-sky-200 py-2">ID</th>
+                    <th class="bg-lime-200 py-2">Nome</th>
+                    <th class="bg-red-300 py-2">MUNICÍPIO</th>
+                    <th class="bg-slate-300 py-2">BAIRRO</th>
+                    <th class="bg-purple-300 py-2">TELEFONE</th>
+                    <th class="bg-amber-200 py-2">AÇÕES</th>
+                </tr>
+            </thead>
+            <tbody id="tabela-produtores" class="text-center">
+                <!-- Conteúdo dinâmico -->
+            </tbody>
+        </table>
+    </div>
+
+    <!-- Modal de Cadastro de Produtor -->
+    <div id="modal-cadastro" class="fixed inset-0 bg-stone-950/70 hidden flex items-center justify-center">
+        <div class="bg-white p-6 rounded w-[21.875rem]">
+            <h2 class="text-xl font-bold mb-4">Cadastrar Produtor</h2>
+            <form id="form-cadastro">
+                <label class="block">Nome</label>
+                <input id="nome" type="text" class="border w-full px-2 py-1 rounded mb-3" required>
+
+                <label class="block">Município</label>
+                <input id="municipio" type="text" class="border w-full px-2 py-1 rounded mb-3" required>
+
+                <label class="block">Bairro</label>
+                <input id="bairro" type="text" class="border w-full px-2 py-1 rounded mb-3" required>
+
+                <label class="block">Telefone</label>
+                <input id="telefone" type="text" class="border w-full px-2 py-1 rounded mb-3" required>
+
+                <div class="flex justify-end gap-2 mt-4">
+                    <button type="button" class="cursor-pointer py-2 px-2 bg-gray-400 rounded"
+                        onclick="fecharModal()">Cancelar</button>
+                    <button type="button" class="cursor-pointer py-2 px-2 bg-green-600 text-white rounded"
+                        onclick="cadastrar(event)">Salvar</button>
+                </div>
+            </form>
+        </div>
+    </div>
+    <!-- Modal de Editar Produtor -->
+    <div id="modal-editar" class="fixed inset-0 bg-stone-950/70 hidden flex items-center justify-center">
+        <div class="bg-white p-6 rounded w-[21.875rem]">
+            <h2 class="text-xl font-bold mb-4">Editar Produtor</h2>
+            <form id="form-editar">
+                <label class="block">Nome</label>
+                <input id="nome-editar" type="text" class="border w-full px-2 py-1 rounded mb-3" required>
+
+                <label class="block">Município</label>
+                <input id="municipio-editar" type="text" class="border w-full px-2 py-1 rounded mb-3" required>
+
+                <label class="block">Bairro</label>
+                <input id="bairro-editar" type="text" class="border w-full px-2 py-1 rounded mb-3" required>
+
+                <label class="block">Telefone</label>
+                <input id="telefone-editar" type="text" class="border w-full px-2 py-1 rounded mb-3" required>
+
+                <div class="flex justify-end gap-2 mt-4">
+                    <button type="button" class="cursor-pointer py-2 px-2 bg-gray-400 rounded"
+                        onclick="fecharEditar()">Cancelar</button>
+                    <button type="button" class="cursor-pointer py-2 px-2 bg-green-600 text-white rounded"
+                        onclick="editar(event)" id="btn-salvar-edicao">Editar</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script src="./js/geral.js"></script>
+    <script src="./js/produtorRural.js"></script>
+</body>
+
+</html>

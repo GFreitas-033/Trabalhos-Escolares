@@ -10,5 +10,11 @@ class Produto extends Model
     use HasFactory;
     
     //Permite atribuição em massa nos campos nome, preco, descricao e quantidade
-    protected $fillable = ['nome', 'preco', 'descricao', 'quantidade'];
+    protected $fillable = ['nome', 'fornecedor_id', 'preco', 'descricao', 'quantidade'];
+
+    public function fornecedor(){
+        //1 Produto pertence a 1 Fornecedor
+        return $this->belongsTo('App\Models\Fornecedor');
+    }
+
 }

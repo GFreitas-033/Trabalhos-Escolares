@@ -35,6 +35,12 @@
                     <li class="nav-item">
                         <a class="nav-link" href="/fornecedor">Fornecedores</a>
                     </li>                             
+                    <li class="nav-item">
+                        <a class="nav-link" href="/cliente">Clientes</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/pedido">Pedidos</a>
+                    </li>
                 </ul>
                 <ul class="navbar-nav">
                     <li class="nav-item dropdown" style="margin-right: 40px">
